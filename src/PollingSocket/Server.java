@@ -1,24 +1,14 @@
 package PollingSocket;
 
-import ServiceDiscovery.center.LoadDefinition;
 import com.mec.util.DidaDida;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-/**
- * ʹ�ã�
- * 1. setPort
- * 2. setDealNetMessage
- * 3. ����startup
- */
 public class Server implements Runnable {
     private ServerSocket server;
     private int port;
@@ -80,7 +70,7 @@ public class Server implements Runnable {
             try {
                 Socket client = server.accept();
                 CommunicationUnit unit = new CommunicationUnit(client);
-                unit.setDealNetMessage(dealNetMessage);
+//                unit.setDealNetMessage(dealNetMessage);
                 synchronized (queue) {
                     queue[1 - curIndex].add(unit);
                 }
@@ -112,11 +102,6 @@ public class Server implements Runnable {
         return list;
     }
 
-    /**
-     * ��ѯ�߳�
-     * �޳������߳�,������ѯ50�ζ�û�з�����Ϣ���޳�
-     * ͳ�Ƹ������
-     */
     class CommunicationUnitScanner extends DidaDida {
         CommunicationUnitScanner(long delay) {
             super(delay);

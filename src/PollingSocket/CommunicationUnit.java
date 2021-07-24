@@ -1,6 +1,6 @@
 package PollingSocket;
 
-import ServiceDiscovery.center.LoadDefinition;
+import center.LoadDefinition;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -45,12 +45,6 @@ public class CommunicationUnit implements Runnable {
         }
     }
 
-    /**
-     * �쳣���ߺ�û�з�����Ϣ����0
-     *
-     * @return
-     * @throws IOException
-     */
     boolean hasMessage() {
         int available = 0;
         try {
